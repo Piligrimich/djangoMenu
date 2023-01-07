@@ -1,0 +1,12 @@
+<ul>
+    {% for item in items %}
+        <li>
+            <a href="{% url 'menu:menu_item' item.slug %}">{{ item.title }}</a>
+        </li>
+
+        {% if item.child_items %}
+            {% include 'menu/menu.html' with items=item.child_items %}
+        {% endif %}
+
+    {% endfor %}
+</ul>
